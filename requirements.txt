@@ -5,4 +5,6 @@ Pillow
 requests
 numerize
 python-dotenv
+whitenoise
 psycopg2
+dj-database-url
