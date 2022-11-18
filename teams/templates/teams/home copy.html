@@ -1,0 +1,223 @@
+{% extends "teams/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="site-wrap">
+  <div class="container">
+
+    <div class="row align-items-center">
+      <div class="col-lg-5 mx-auto text-center">
+        <h2 class="txt">Matches</h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+
+        <div class="row row-cols-2 row-cols-lg-4">
+
+          <div class="card">
+            Group A
+
+            <div class="col">
+            
+              <Form id="form" action=""  method="post" name="theForm" onsubmit="return DisplayMessage();">
+                {% csrf_token %}
+                <hr>
+                <p>
+
+                    {% if messages %}
+                    {% for message in messages %}
+                <div class="alert alert-{{message.tags}}" role="alert">
+                    {{ message | safe }}
+                </div>
+                {% endfor %}
+                {% endif %}
+                
+                {{form.as_p}}
+              
+                    <hr>
+
+                    <div class="" id="bk">
+                      <input id="form-button" style="border-radius: 10px; height: 3rem;" class="main-btn icon-btn btn-block" type="submit"
+                          value="Submit Request">
+                  </div>
+
+                </div>
+
+      
+            </Form>            
+          </div>
+
+        </div>          
+        <div>
+
+
+          
+
+    </div>
+
+
+  </div>
+</div>
+
+
+<style>
+  li {
+    font-family: 'Poppins';
+    color: #fff;
+    -webkit-animation: mainFadeIn 2s forwards;
+    -o-animation: mainFadeIn 2s forwards;
+    animation: mainFadeIn 2s forwards;
+    opacity: 0;
+  };
+
+  
+
+  /* display: flex;
+  align-items: baseline;
+  position: relative; */
+
+  /* These are the delays */
+  
+  /* li:nth-child(n) {
+        animation-delay: calc(attr(n * 0.25s));
+    }
+   */
+
+  li:nth-child(1) {animation-delay: 0s;}
+  li:nth-child(2) {animation-delay: 0.25s;}
+  li:nth-child(3) {animation-delay: 0.5s;}
+  li:nth-child(4) {animation-delay: 0.75s;}
+  li:nth-child(5) {animation-delay: 1s;}
+  li:nth-child(6) {animation-delay: 1.25s;}
+  li:nth-child(7) {animation-delay: 1.5s;}
+  li:nth-child(8) {animation-delay: 1.75s;}
+  li:nth-child(9) {animation-delay: 2s;}
+  li:nth-child(10) {animation-delay: 2.25s;}
+  li:nth-child(11) {animation-delay: 2.5s;}
+
+
+  @keyframes mainFadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      font-size: 20px;
+      opacity: 1;
+    }
+  }
+
+  @keyframes secFadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 0.5;
+    }
+  }
+
+
+  .txt {
+    text-align: center;
+    font-family: 'Roboto';
+    font-size: 12vmin;
+    font-weight: 700;
+    animation-name: netflix_style;
+    animation-duration: 2s;
+    outline: none;
+    white-space: nowrap;
+    color: #fff;
+  }
+
+  @keyframes netflix_style {
+
+    0% {
+      opacity: 1;
+      font-size: 50px;
+    }
+  }
+
+
+  button{
+          border: none;
+          border-radius: 15px;
+        }
+        
+        button:hover{
+          border: none;
+          padding: 15px;
+          border-radius: 15px;
+          } 
+        
+        
+        .button-os{
+
+            width: 200px;
+            height: 65px;
+
+            margin: auto;
+            background-color: #EE1E46;
+
+            transition: background-color 2.2s;
+            transition-duration: 3s;
+            transition: 1.5s;
+          }
+          
+          .button-os:hover{
+
+            background-color: #EE1E46;
+          }
+          
+          .button-os a{
+            font-size: 20px;
+            font-weight: bold;
+            display: block;
+            text-decoration: none;
+            color:#060a13;
+            transition: 1.5s;
+          }
+          
+          .button-os a:hover{
+            color: white;
+            letter-spacing: 5px;
+          }
+          .button-os a:focus{
+            border: none;
+          }
+          
+</style>
+
+<script>
+
+  function funcctionName() {
+    $.ajax({
+      type: "GET",
+
+      url: "{% url 'ajax_load_teams' %}",
+
+      success: function (data) {
+        // console.log(data)
+        console.log('success')
+        console.log(data)
+
+        console.log(data.length)
+        if (data.length == 12) {
+          $("#ajax").html(`<ul><a> Not Available </a></ul>`);
+        }
+        else {
+          $("#ajax").html(data);
+        }
+      }
+    })
+  }
+
+
+
+
+
+</script>
+{% endblock %}

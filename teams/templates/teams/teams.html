@@ -1,0 +1,30 @@
+{% load static %}
+<span class="score" style="font-size: 30px; padding-top: 30px;">VS</span>
+<div class="team-1 w-50">
+    <div class="team-details w-100 text-center">
+      <div class="team-1 text-center" style="padding: 0;">
+        <h3 class="text-white">Home</h3>
+        <img src="{% static 'img/logo_1.png' %}" alt="Image">
+      </div> 
+      <ul class="list-unstyled">
+        {% for i in TeamA %}
+        <li>{{i}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="team-2 w-50">
+    <div class="team-details w-100 text-center">
+      <h3 class="text-white">Away</h3>
+      <div class="team-1 text-center" style="padding: 0;">
+        
+        <img src="{% static 'img/logo_2.png' %}" alt="Image">
+      </div>
+      
+        <ul class="list-unstyled">
+        {% for i in TeamB %}
+        <li style="font-size: 5px;">{{i}}</li>
+        {% endfor %}
+        </ul>
+    </div>
+  </div>
