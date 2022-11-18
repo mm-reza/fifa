@@ -144,23 +144,28 @@ def Scores(request):
 
     scores = Profile.objects.all()
 
+
+
     for s in scores:
 
         pre = Predictions.objects.filter(user=s.user)
         points = 0
-        for a in pre:
-            res = Teams.objects.get(ranking=a.rank)
-            a.result= res
-            if a.rank==a.prediction.ranking:
-                a.point=a.prediction.point
-            else:
-                a.point=0         
-            a.save()
+        try:
+            for a in pre:
+                res = Teams.objects.get(ranking=a.rank)
+                a.result= res
+                if a.rank==a.prediction.ranking:
+                    a.point=a.prediction.point
+                else:
+                    a.point=0         
+                a.save()
 
-            points+=a.point
+                points+=a.point
 
-            s.points=points
-            s.save()
+                s.points=points
+                s.save()
+        except:
+            pass
 
     context ={
 
