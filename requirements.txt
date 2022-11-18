@@ -1,0 +1,6 @@
+Django
+django-crispy-forms
+gunicorn
+Pillow
+requests
+numerize
