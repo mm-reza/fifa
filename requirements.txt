@@ -4,4 +4,5 @@ gunicorn
 Pillow
 requests
 numerize
-django-environ
+python-dotenv
+psycopg2

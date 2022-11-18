@@ -112,8 +112,8 @@ class Predictions(models.Model):
         return self.user.username
             
     class Meta:
-        # unique_together = ('user', 'round', 'rank')
-        unique_together = ('user', 'round', 'prediction')
+        unique_together = ('user', 'round', 'rank')
+        # unique_together = ('user', 'round', 'prediction')
 
 
 class PredictForm(ModelForm):
