@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-q#w4w!g9$^an613%^s2^2jalvrw&^g)+16l#%-cz4s*6b#1bx_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['fifa2022.up.railway.app', '127.0.0.1' ]
 
