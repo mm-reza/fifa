@@ -237,12 +237,9 @@ def QuarterFinal(request):
     for ur in user_predictions:
         u.append(u)
 
-    q=[]
-    for q in a:
-        q.append(q)
 
     a_new = []
-    print('---------', a, a_new)
+    print('---------',teams, a, u, a_new)
     
             
     
