@@ -229,20 +229,20 @@ def QuarterFinal(request):
 
     print(current_user)
 
-    a = Teams.objects.filter(round="8")  #.values_list("team", flat=True)
+    a = Teams.objects.filter(group ="Q")  #.values_list("team", flat=True)
     teams = [a]
 
-    user_predictions = Predictions.objects.filter(user=current_user, round = '8')
+    user_predictions = Predictions.objects.filter(user=current_user, group = 'Q')
 
     a_new = []
     
-    for q in user_predictions:
-        for t in a:
+    for q in a:
+        for t in user_predictions:
             
-            if q.prediction == t.team:
+            if q.team== t.prediction:
                 pass
             else:
-                a_new.append(t)
+                a_new.append(q)
 
     # print(type(teams), teams[0])
 
