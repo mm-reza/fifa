@@ -241,7 +241,7 @@ def QuarterFinal(request):
                 pass
             else:
                 a_new.append(p)
-            print('---------', p, u, a, a_new
+            print('---------', p, u, a, a_new)
     
             
     
