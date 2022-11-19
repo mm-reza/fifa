@@ -230,13 +230,14 @@ def QuarterFinal(request):
     print(current_user)
 
     a = Teams.objects.filter(round = '8')  #.values_list("team", flat=True)
-    teams = [a]
+    teams =set (Teams.objects.all()[0]('team'))
 
     user_predictions = Predictions.objects.filter(user=current_user)
     u=[]
     for ur in user_predictions:
         u.append(ur.prediction)
 
+    
 
     a_new = []
 
@@ -248,7 +249,7 @@ def QuarterFinal(request):
             pass
         else:
             new.append(x)
-    print('---------', new)
+    print('---------', new, teams)
     
             
     
