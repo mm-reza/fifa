@@ -225,7 +225,7 @@ def Super16(request):
 
 def QuarterFinal(request):
 
-current_user = request.user
+    current_user = request.user
 
     print(current_user)
 
