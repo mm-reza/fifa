@@ -237,7 +237,7 @@ def QuarterFinal(request):
     a_new = []
     
     for q in a:
-        if q in user_predictions.prediction :
+        if q in user_predictions[0].prediction :
             pass
         else:
             a_new.append(q)
