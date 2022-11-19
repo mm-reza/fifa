@@ -286,11 +286,14 @@ def QuarterFinal(request):
                 if x in u :
                     print(user_predictions)
                     messages.warning(request, "You have already predicted !")
-                else:    
-                    for r, value in group_stage.items():
+                else: 
+                    try:   
+                        for r, value in group_stage.items():
                         #t = Teams.objects.get(team=value, round='8')
-                        p = Predictions(user = current_user, round='8', rank = r, index=S.group, group = S.group, prediction=S)
-                        p.save()
+                            p = Predictions(user = current_user, round='8', rank = r, index=S.group, group = S.group, prediction=S)
+                            p.save()
+                except:
+                    messages.warning(request, "You have already predicted !")
 
         else:
             print('form not valid')
