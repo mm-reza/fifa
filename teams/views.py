@@ -239,9 +239,16 @@ def QuarterFinal(request):
 
 
     a_new = []
+
     for q in a:
         a_new.append(q)
-    print('---------',u, a, a_new)
+    new = []
+    for x in a_new:
+        if x in u:
+            pass
+        else:
+            new.append(x)
+    print('---------', new)
     
             
     
