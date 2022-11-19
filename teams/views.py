@@ -230,7 +230,7 @@ def QuarterFinal(request):
     print(current_user)
 
     a = Teams.objects.filter(round = '8')  #.values_list("team", flat=True)
-    teams =set (Teams.objects.all()[0]('team'))
+    teams =set(Teams.objects.values_list("team", flat=True)) #(Teams.objects.all()[0]('team'))
 
     user_predictions = Predictions.objects.filter(user=current_user)
     u=[]
