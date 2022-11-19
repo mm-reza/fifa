@@ -54,4 +54,4 @@ class super16(forms.Form):
     # S16=forms.ModelChoiceField(label='S16', queryset=Teams.objects.filter(group='16H'))
     
 class super8(forms.Form):
-    S = forms.ModelChoiceField(label='S', queryset=Teams.objects.filter(group='8'))
+    S = forms.ModelChoiceField(label='S')
