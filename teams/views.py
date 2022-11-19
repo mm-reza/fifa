@@ -288,8 +288,8 @@ def QuarterFinal(request):
                     messages.warning(request, "You have already predicted !")
                 else:    
                     for r, value in group_stage.items():
-                        t = Teams.objects.get(team=value, round='8')
-                        p = Predictions(user = current_user, round='8', rank = r, index=t.group, group = t.group, prediction=t)
+                        #t = Teams.objects.get(team=value, round='8')
+                        p = Predictions(user = current_user, round='8', rank = r, index=S.group, group = S.group, prediction=S)
                         p.save()
 
         else:
