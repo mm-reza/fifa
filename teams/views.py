@@ -233,14 +233,17 @@ def QuarterFinal(request):
     teams = [a]
 
     user_predictions = Predictions.objects.filter(user=current_user)
+    u=[]
+    for ur in user_predictions:
+        u.append(u.prediction)
 
-    a_new = []
-    for u in user_predictions:
-        if u.prediction in a:
-            pass
-        else:
-            a_new.append(u)
-        print('---------', u, a, a_new)
+    q=[]
+    for q in a:
+        q.append(q)
+
+    a_new = q - u
+   
+        print('---------', a, a_new)
     
             
     
