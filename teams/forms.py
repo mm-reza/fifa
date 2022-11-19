@@ -35,3 +35,21 @@ class GroupStage(forms.Form):
     H3=forms.ModelChoiceField(label='H3', queryset=Teams.objects.filter(group='H'))
     H4=forms.ModelChoiceField(label='H4', queryset=Teams.objects.filter(group='H'))
 
+class super16(forms.Form):
+    S1=forms.ModelChoiceField(label='S1', queryset=Teams.objects.filter(group='16A'))
+    S2=forms.ModelChoiceField(label='S2', queryset=Teams.objects.filter(group='16A'))
+    S3=forms.ModelChoiceField(label='S3', queryset=Teams.objects.filter(group='16B'))
+    S4=forms.ModelChoiceField(label='S4', queryset=Teams.objects.filter(group='16B'))
+    S5=forms.ModelChoiceField(label='S5', queryset=Teams.objects.filter(group='16C'))
+    S6=forms.ModelChoiceField(label='S6', queryset=Teams.objects.filter(group='16C'))
+    S7=forms.ModelChoiceField(label='S7', queryset=Teams.objects.filter(group='16D'))
+    S8=forms.ModelChoiceField(label='S8', queryset=Teams.objects.filter(group='16D'))
+    # S9=forms.ModelChoiceField(label='S9', queryset=Teams.objects.filter(group='16E'))
+    # S10=forms.ModelChoiceField(label='S10', queryset=Teams.objects.filter(group='16E'))
+    # S11=forms.ModelChoiceField(label='S11', queryset=Teams.objects.filter(group='16F'))
+    # S12=forms.ModelChoiceField(label='S12', queryset=Teams.objects.filter(group='16F'))
+    # S13=forms.ModelChoiceField(label='S13', queryset=Teams.objects.filter(group='16G'))
+    # S14=forms.ModelChoiceField(label='S14', queryset=Teams.objects.filter(group='16G'))
+    # S15=forms.ModelChoiceField(label='S15', queryset=Teams.objects.filter(group='16H'))
+    # S16=forms.ModelChoiceField(label='S16', queryset=Teams.objects.filter(group='16H'))
+    

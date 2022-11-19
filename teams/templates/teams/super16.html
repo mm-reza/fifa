@@ -1,0 +1,384 @@
+{% extends "teams/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="site-wrap">
+  <div class="container">
+
+
+    <div class="row  d-flex justify-content-center p-5">
+      <div class="col-lg-10">
+          
+              <Form id="form" action=""  method="post" name="theForm" onsubmit="return DisplayMessage();">
+                {% csrf_token %}
+                    {% if messages %}
+                    {% for message in messages %}
+                <div class="alert alert-{{message.tags}}" role="alert">
+                    {{ message | safe }}
+                </div>
+                {% endfor %}
+                {% endif %}
+
+
+
+                <div class="row row-cols-1 row-cols-md-4 g-4">
+                  <div class="col" style="padding:10px">
+                    <div class="card h-100">
+                      <div class="card-body">
+                        <h5 class="card-title d-flex justify-content-center">Match</h5>
+                        <table class="card-table">
+
+                          <tr>
+                              <td style="width:100%">
+                                <select name='S1' required id='id_S1' class= 'box-element form-control' style='height: 55px;'>{% for rs in A %}
+                                  <option value='{{ rs.id }}'>{{ rs.team }}</option>
+                                  {% endfor %}
+                              </select>
+                              </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col" style="padding:10px">
+                    <div class="card h-100">
+                      <div class="card-body">
+                        <h5 class="card-title d-flex justify-content-center">Match</h5>
+                        <table class="card-table">
+
+                          <tr>
+                              <td style="width:100%">
+                                <select name='S2' required id='id_S2' class= 'box-element form-control' style='height: 55px;'>{% for rs in B %}
+                                  <option value='{{ rs.id }}'>{{ rs.team }}</option>
+                                  {% endfor %}
+                              </select>
+                              </td>
+                          </tr>
+                        </table>
+                        
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col" style="padding:10px">
+                    <div class="card h-100">
+                      <div class="card-body">
+                        <h5 class="card-title d-flex justify-content-center">Match</h5>
+                        <table class="card-table">
+
+                          <tr>
+                              <td style="width:100%">
+                                <select name='S3' required id='id_S3' class= 'box-element form-control' style='height: 55px;'>{% for rs in C %}
+                                  <option value='{{ rs.id }}'>{{ rs.team }}</option>
+                                  {% endfor %}
+                              </select>
+                              </td>
+                          </tr>
+                        </table>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col" style="padding:10px">
+                    <div class="card h-100">
+                      <div class="card-body">
+                        <h5 class="card-title d-flex justify-content-center">Match</h5>
+                        <table class="card-table">
+
+                          <tr>
+                              <td style="width:100%">
+                                <select name='S4' required id='id_S4' class= 'box-element form-control' style='height: 55px;'>{% for rs in D %}
+                                  <option value='{{ rs.id }}'>{{ rs.team }}</option>
+                                  {% endfor %}
+                              </select>
+                              </td>
+                          </tr>
+                        </table>
+                   
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col" style="padding:10px">
+                    <div class="card h-100">
+                      <div class="card-body">
+                        <h5 class="card-title d-flex justify-content-center">Match</h5>
+                        <table class="card-table">
+
+                          <tr>
+                              <td style="width:100%">
+                                <select name='S5' required id='id_S5' class= 'box-element form-control' style='height: 55px;'>{% for rs in E %}
+                                  <option value='{{ rs.id }}'>{{ rs.team }}</option>
+                                  {% endfor %}
+                              </select>
+                              </td>
+                          </tr>
+                        </table>                
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col" style="padding:10px">
+                    <div class="card h-100">
+                      <div class="card-body">
+                        <h5 class="card-title d-flex justify-content-center">Match</h5>
+                        <table class="card-table">
+
+                          <tr>
+                              <td style="width:100%">
+                                <select name='S6' required id='id_S6' class= 'box-element form-control' style='height: 55px;'>{% for rs in F %}
+                                  <option value='{{ rs.id }}'>{{ rs.team }}</option>
+                                  {% endfor %}
+                              </select>
+                              </td>
+                          </tr>
+                        </table>
+
+                  
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col" style="padding:10px">
+                    <div class="card h-100">
+                      <div class="card-body">
+                        <h5 class="card-title d-flex justify-content-center">Match</h5>
+                        <table class="card-table">
+
+                          <tr>
+                              <td style="width:100%">
+                                <select name='S8' required id='id_S8' class= 'box-element form-control' style='height: 55px;'>{% for rs in G %}
+                                  <option value='{{ rs.id }}'>{{ rs.team }}</option>
+                                  {% endfor %}
+                              </select>
+                              </td>
+                          </tr>
+                        </table>
+
+
+                  
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col" style="padding:10px">
+                    <div class="card h-100">
+                      <div class="card-body">
+                        <h5 class="card-title d-flex justify-content-center">Match</h5>
+                        <table class="card-table">
+
+                          <tr>
+                              <td style="width:100%">
+                                <select name='H1' required id='id_H1' class= 'box-element form-control' style='height: 55px;'>{% for rs in H %}
+                                  <option value='{{ rs.id }}'>{{ rs.team }}</option>
+                                  {% endfor %}
+                              </select>
+                              </td>
+                          </tr>
+                        </table>
+                   
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                  <div class="" id="bk">
+                    <button class="button-os btn-block"><a>Predict</a></button>
+                  </div>
+
+                </div>
+
+      
+            </Form>            
+
+
+
+
+
+      </div>          
+    <div>
+  </div>
+</div>
+
+
+<style>
+  li {
+    font-family: 'Poppins';
+    color: #fff;
+    -webkit-animation: mainFadeIn 2s forwards;
+    -o-animation: mainFadeIn 2s forwards;
+    animation: mainFadeIn 2s forwards;
+    opacity: 0;
+  };
+
+  
+
+  /* display: flex;
+  align-items: baseline;
+  position: relative; */
+
+  /* These are the delays */
+  
+  /* li:nth-child(n) {
+        animation-delay: calc(attr(n * 0.25s));
+    }
+   */
+
+  li:nth-child(1) {animation-delay: 0s;}
+  li:nth-child(2) {animation-delay: 0.25s;}
+  li:nth-child(3) {animation-delay: 0.5s;}
+  li:nth-child(4) {animation-delay: 0.75s;}
+  li:nth-child(5) {animation-delay: 1s;}
+  li:nth-child(6) {animation-delay: 1.25s;}
+  li:nth-child(7) {animation-delay: 1.5s;}
+  li:nth-child(8) {animation-delay: 1.75s;}
+  li:nth-child(9) {animation-delay: 2s;}
+  li:nth-child(10) {animation-delay: 2.25s;}
+  li:nth-child(11) {animation-delay: 2.5s;}
+
+
+  @keyframes mainFadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      font-size: 20px;
+      opacity: 1;
+    }
+  }
+
+  @keyframes secFadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 0.5;
+    }
+  }
+
+
+  .txt {
+    text-align: center;
+    font-family: 'Roboto';
+    font-size: 12vmin;
+    font-weight: 700;
+    animation-name: netflix_style;
+    animation-duration: 2s;
+    outline: none;
+    white-space: nowrap;
+    color: #fff;
+  }
+
+  th{
+    padding:0;
+    border:0;
+  }
+.card .card-table{
+  font-size:10px;
+  font-weight:600;
+  opacity:90%;
+
+}
+
+.form-control{
+  height:28px !important ;
+  font-size:12px;
+  font-weight:bold;
+  opacity:80%;
+  border-radius: 10px;
+  background-color:transparent;
+  text-align:center;
+
+
+}
+.card{
+  border-radius:20px !important;
+
+}
+
+  @keyframes netflix_style {
+
+    0% {
+      opacity: 1;
+      font-size: 50px;
+    }
+  }
+
+
+  button{
+          border: none;
+          border-radius: 15px;
+        }
+        
+        button:hover{
+          border: none;
+          padding: 15px;
+          border-radius: 15px;
+          } 
+        
+        
+        .button-os{
+
+            width: 200px;
+            height: 65px;
+
+            margin: auto;
+            background-color: #EE1E46;
+
+            transition: background-color 2.2s;
+            transition-duration: 3s;
+            transition: 1.5s;
+          }
+          
+          .button-os:hover{
+
+            background-color: #EE1E46;
+          }
+          
+          .button-os a{
+            font-size: 20px;
+            font-weight: bold;
+            display: block;
+            text-decoration: none;
+            color:#060a13;
+            transition: 1.5s;
+          }
+          
+          .button-os a:hover{
+            color: white;
+            letter-spacing: 5px;
+          }
+          .button-os a:focus{
+            border: none;
+          }
+          
+</style>
+
+<script>
+
+  function funcctionName() {
+    $.ajax({
+      type: "GET",
+
+      url: "{% url 'ajax_load_teams' %}",
+
+      success: function (data) {
+        // console.log(data)
+        console.log('success')
+        console.log(data)
+
+        console.log(data.length)
+        if (data.length == 12) {
+          $("#ajax").html(`<ul><a> Not Available </a></ul>`);
+        }
+        else {
+          $("#ajax").html(data);
+        }
+      }
+    })
+  }
+
+
+
+
+
+</script>
+{% endblock %}

@@ -11,6 +11,10 @@ from . import views
 urlpatterns = [
     path('', views.PostListView, name='blog-home'),
     path('scores/', views.Scores, name='scores'),
+    path('super16/', views.Super16, name='super16'),
+    path('quarterfinal/', views.QuarterFinal, name='quarterfinal'),
+    path('semifinal/', views.SemiFinal, name='semifinal'),
+    path('final/', views.Final, name='final'),
     # path('', PostListView.as_view(), name='blog-home'),
     # path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),
     # path('post/new/', PostCreateView.as_view(), name='post-create'),

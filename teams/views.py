@@ -117,13 +117,13 @@ def PostListView(request):
                 }
             print(group_stage)
             if current_user.is_authenticated:
-                user_predictions = Predictions.objects.filter(user=current_user)
+                user_predictions = Predictions.objects.filter(user=current_user, round = 'Group Stage')
                 if len(user_predictions)>0:
                     print(user_predictions)
                     messages.warning(request, "You have already predicted !")
                 else:    
                     for r, value in group_stage.items():
-                        t = Teams.objects.get(team=value)
+                        t = Teams.objects.get(team=value, round='Group Stage')
                         p = Predictions(user = current_user, round='Group Stage', rank = r, index=t.group, group = t.group, prediction=t)
                         p.save()
 
@@ -132,6 +132,88 @@ def PostListView(request):
 
     return render(request, "teams/home.html", context)
 
+
+def Super16(request):
+
+    current_user = request.user
+
+    print(current_user)
+
+    a = Teams.objects.filter(group="16A")  #.values_list("team", flat=True)
+    b = Teams.objects.filter(group="16B")
+    c = Teams.objects.filter(group="16C")
+    d = Teams.objects.filter(group="16D")
+    e = Teams.objects.filter(group="16E")
+    f = Teams.objects.filter(group="16F")
+    g = Teams.objects.filter(group="16G")
+    h = Teams.objects.filter(group="16H")
+
+    teams = [a, b, c, d, e, f, g, h]
+
+    # print(type(teams), teams[0])
+
+    # import pandas as pd
+    # data = pd.read_csv('C:/Users/Reza/Desktop/teams.csv', header = None) 
+
+    # for i in data.index:
+    #     t = Teams(user = current_user, round='Group Stage', team=data[0][i], group = data[1][i], index= data[2][i])
+    #     t.save()
+        # tem = Teams.objects.get(team=data[0][i])
+        # t = Predictions(user = current_user, round='Group Stage', team = tem, group = data[1][i], index= data[2][i])
+        # t.save()
+    form = super16(request.POST)
+    context = {
+    'teams' : teams,
+    'A': a,
+    'B': b,
+    'C': c,
+    'D': d,
+    'E': e,
+    'F': f, 
+    'G': g, 
+    'H': h,
+    'form':form
+    }
+    if request.method == 'POST':  # if there is a post
+        if form.is_valid():
+            data = Predictions()
+            S1 = form.cleaned_data['S1']
+            S2 = form.cleaned_data['S2']
+            S3 = form.cleaned_data['S3']
+            S4 = form.cleaned_data['S4']
+            S5 = form.cleaned_data['S5']
+            S6 = form.cleaned_data['S6']
+            S7 = form.cleaned_data['S7']
+            S8 = form.cleaned_data['S8']
+
+            group_stage = {
+                'S1':S1, 
+                'S2':S2, 
+                'S3':S3, 
+                'S4':S4, 
+                'S5':S5, 
+                'S6':S6, 
+                'S7':S7, 
+                'S8':S8, 
+
+                }
+            print(group_stage)
+            if current_user.is_authenticated:
+                user_predictions = Predictions.objects.filter(user=current_user, round = '16')
+                if len(user_predictions)>0:
+                    print(user_predictions)
+                    messages.warning(request, "You have already predicted !")
+                else:    
+                    for r, value in group_stage.items():
+                        t = Teams.objects.get(team=value, round='16')
+                        p = Predictions(user = current_user, round='16', rank = r, index=t.group, group = t.group, prediction=t)
+                        p.save()
+
+        else:
+            print('form not valid')
+
+    return render(request, "teams/super16.html", context)
+
 # class PostListView(ListView):
 #     model = Teams
 #     template_name = 'teams/home.html'  # <app>/<model>_<viewtype>.html
@@ -139,6 +221,23 @@ def PostListView(request):
 #     context_object_name = 'teams'
 #     ordering = ['-create_at']
 #     # paginate_by = 2
+
+
+def QuarterFinal(request):
+
+
+    return render(request, "teams/home.html")
+
+def SemiFinal(request):
+
+
+    return render(request, "teams/home.html")
+
+def Final(request):
+
+
+    return render(request, "teams/home.html")
+ 
 
 def Scores(request):
 
@@ -150,9 +249,11 @@ def Scores(request):
 
         pre = Predictions.objects.filter(user=s.user)
         points = 0
-        try:
-            for a in pre:
-                res = Teams.objects.get(ranking=a.rank)
+        print(pre)
+        for a in pre:
+            try:
+                print("----------------",a.rank, type(a))
+                res = Teams.objects.get(ranking=a.rank, round=a.round)
                 a.result= res
                 if a.rank==a.prediction.ranking:
                     a.point=a.prediction.point
@@ -161,11 +262,11 @@ def Scores(request):
                 a.save()
 
                 points+=a.point
+            except:
+                pass
 
-                s.points=points
-                s.save()
-        except:
-            pass
+            s.points=points
+            s.save()
 
     context ={
 
