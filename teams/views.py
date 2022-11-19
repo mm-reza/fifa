@@ -241,7 +241,7 @@ def QuarterFinal(request):
     a_new = []
     for q in a:
         a_new.append(q)
-    print('---------',teams, a, a_new)
+    print('---------',u, a, a_new)
     
             
     
