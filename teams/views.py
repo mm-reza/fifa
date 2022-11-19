@@ -225,8 +225,54 @@ def Super16(request):
 
 def QuarterFinal(request):
 
+current_user = request.user
 
-    return render(request, "teams/home.html")
+    print(current_user)
+
+    a = Teams.objects.filter(group="8")  #.values_list("team", flat=True)
+    teams = [a]
+
+    # print(type(teams), teams[0])
+
+    # import pandas as pd
+    # data = pd.read_csv('C:/Users/Reza/Desktop/teams.csv', header = None) 
+
+    # for i in data.index:
+    #     t = Teams(user = current_user, round='Group Stage', team=data[0][i], group = data[1][i], index= data[2][i])
+    #     t.save()
+        # tem = Teams.objects.get(team=data[0][i])
+        # t = Predictions(user = current_user, round='Group Stage', team = tem, group = data[1][i], index= data[2][i])
+        # t.save()
+    form = super8(request.POST)
+    context = {
+    'teams' : teams,
+    'A': a,
+    'form':form
+    }
+    if request.method == 'POST':  # if there is a post
+        if form.is_valid():
+            data = Predictions()
+            S = form.cleaned_data['S']
+            
+            group_stage = {
+                'S':S, 
+                }
+            print(group_stage)
+            if current_user.is_authenticated:
+                user_predictions = Predictions.objects.filter(user=current_user, round = '8')
+                if S in user_prediction:
+                    print(user_predictions)
+                    messages.warning(request, "You have already predicted !")
+                else:    
+                    for r, value in group_stage.items():
+                        t = Teams.objects.get(team=value, round='8')
+                        p = Predictions(user = current_user, round='8', rank = r, index=t.group, group = t.group, prediction=t)
+                        p.save()
+
+        else:
+            print('form not valid')
+
+    return render(request, "teams/super16.html", context)
 
 def SemiFinal(request):
 
