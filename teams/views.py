@@ -256,7 +256,7 @@ def QuarterFinal(request):
     form = super8(request.POST)
     context = {
     'teams' : teams,
-    'A': a_new,
+    'A': a_new[0],
     'form':form
     }
     if request.method == 'POST':  # if there is a post
