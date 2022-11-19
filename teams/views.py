@@ -232,6 +232,16 @@ def QuarterFinal(request):
     a = Teams.objects.filter(group="8")  #.values_list("team", flat=True)
     teams = [a]
 
+    user_predictions = Predictions.objects.filter(user=current_user, round = '8')
+
+    a_new = []
+    
+    for q in a:
+        if q in user_predictions:
+            pass
+        else:
+            a_new.append(q)
+
     # print(type(teams), teams[0])
 
     # import pandas as pd
@@ -246,7 +256,7 @@ def QuarterFinal(request):
     form = super8(request.POST)
     context = {
     'teams' : teams,
-    'A': a,
+    'A': a_new,
     'form':form
     }
     if request.method == 'POST':  # if there is a post
@@ -259,8 +269,8 @@ def QuarterFinal(request):
                 }
             print(group_stage)
             if current_user.is_authenticated:
-                user_predictions = Predictions.objects.filter(user=current_user, round = '8')
-                if S in user_prediction:
+   
+                if S in user_prediction.prediction :
                     print(user_predictions)
                     messages.warning(request, "You have already predicted !")
                 else:    
