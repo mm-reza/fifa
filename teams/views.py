@@ -236,14 +236,7 @@ def QuarterFinal(request):
 
     a_new = []
     
-    for q in a:
-        for t in user_predictions:
-            
-            if q.group== t.group:
-                pass
-            else:
-                a_new.append(q)
-            print('-----------', q, t, a_new)
+   
 
     # print(type(teams), teams[0])
 
@@ -259,7 +252,7 @@ def QuarterFinal(request):
     form = super8(request.POST)
     context = {
     'teams' : teams,
-    'A': a_new[0],
+    'A': a,
     'form':form
     }
     if request.method == 'POST':  # if there is a post
