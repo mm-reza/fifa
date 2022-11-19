@@ -251,10 +251,6 @@ def QuarterFinal(request):
             new.append(x)
     print('---------', new, teams)
     
-            
-    
-   
-
     # print(type(teams), teams[0])
 
     # import pandas as pd
@@ -292,8 +288,8 @@ def QuarterFinal(request):
                         #t = Teams.objects.get(team=value, round='8')
                             p = Predictions(user = current_user, round='8', rank = r, index=S.group, group = S.group, prediction=S)
                             p.save()
-                except:
-                    messages.warning(request, "You have already predicted !")
+                    except:
+                        messages.warning(request, "You have already predicted !")
 
         else:
             print('form not valid')
