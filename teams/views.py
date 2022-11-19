@@ -237,7 +237,7 @@ def QuarterFinal(request):
     a_new = []
     
     for q in a:
-        if q in user_predictions.team:
+        if q in user_predictions:
             pass
         else:
             a_new.append(q)
