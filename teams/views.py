@@ -243,6 +243,7 @@ def QuarterFinal(request):
                 pass
             else:
                 a_new.append(q)
+         print('--------', q, t, a_new)
 
     # print(type(teams), teams[0])
 
