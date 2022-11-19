@@ -239,7 +239,7 @@ def QuarterFinal(request):
         if u.prediction in a:
             pass
         else:
-            a_new.append(p)
+            a_new.append(u)
         print('---------', u, a, a_new)
     
             
