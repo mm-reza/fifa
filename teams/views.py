@@ -241,11 +241,8 @@ def QuarterFinal(request):
     for q in a:
         q.append(q)
 
-    a_new = []
-    
-    
-   
-        print('---------', a, a_new)
+    a_new = a-q
+    print('---------', a, a_new)
     
             
     
