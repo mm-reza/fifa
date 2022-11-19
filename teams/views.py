@@ -235,11 +235,11 @@ def QuarterFinal(request):
     user_predictions = Predictions.objects.filter(user=current_user)
     u=[]
     for ur in user_predictions:
-        u.append(u.prediction)
+        u.append(u[0].prediction)
 
     q=[]
     for q in a:
-        q.append(q)
+        q.append(q[0])
 
     a_new = a-q
     print('---------', a, a_new)
