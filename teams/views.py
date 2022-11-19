@@ -283,7 +283,7 @@ def QuarterFinal(request):
             print(group_stage)
             if current_user.is_authenticated:
    
-                if S in user_prediction.prediction :
+                if S in user_predictions.prediction :
                     print(user_predictions)
                     messages.warning(request, "You have already predicted !")
                 else:    
