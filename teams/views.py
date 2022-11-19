@@ -236,11 +236,13 @@ def QuarterFinal(request):
 
     a_new = []
     
-    for q in a:
-        if q in user_predictions[0].prediction :
-            pass
-        else:
-            a_new.append(q)
+    for q in user_predictions:
+        for t in a:
+            
+            if q.prediction == t.team:
+                pass
+            else:
+                a_new.append(t)
 
     # print(type(teams), teams[0])
 
