@@ -32,12 +32,14 @@
                           <tr>
                               <th class="text-left">A1: </th>
                               <td style="width:100%">
-{% for rs in teams %}
+
                                 <select name='A1' required id='id_A1' class= 'box-element form-control' style='height: 55px;'>
+{% for rs in teams %}
 <option value='{{ rs.id }}'>{{ rs.team }}</option>
-                  
-                              </select>
 {% endfor %}
+                 
+                              </select>
+
                               </td>
                           </tr>
                         </table>
