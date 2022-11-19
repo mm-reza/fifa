@@ -282,7 +282,7 @@ def QuarterFinal(request):
         else:
             print('form not valid')
 
-    return render(request, "teams/super16.html", context)
+    return render(request, "teams/super8.html", context)
 
 def SemiFinal(request):
 
