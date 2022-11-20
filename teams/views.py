@@ -230,7 +230,7 @@ def QuarterFinal(request):
 
     print(current_user)
 
-    a = Teams.objects.filter(round = 'QA')  #.values_list("team", flat=True)
+    a = Teams.objects.filter(round = 'QA', ranking__isnull=True) #.values_list("team", flat=True)
     teams = Teams.objects.filter(round='Group Stage')
 
     user_predictions = Predictions.objects.filter(user=current_user, round = 'QA')
