@@ -1,0 +1,10 @@
+Django
+django-crispy-forms
+gunicorn
+Pillow
+requests
+numerize
+python-dotenv
+whitenoise
+psycopg2
+dj-database-url
