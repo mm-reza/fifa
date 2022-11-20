@@ -293,7 +293,7 @@ def QuarterFinal(request):
                 else: 
                     for r, value in group_stage.items():
                         try:
-                            p = Predictions(user = current_user, round = 'QA', rank = S.ranking , index=S.group, group = new[0].group, prediction=S)
+                            p = Predictions(user = current_user, round = 'QA', rank = S, index=S.group, group = new[0].group, prediction=S)
                             p.save()
                             messages.success(request, "Pedictions Received !")
                             return HttpResponseRedirect("/quiz")
