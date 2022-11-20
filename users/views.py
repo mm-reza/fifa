@@ -6,6 +6,8 @@ from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 
+from teams.models import Predictions, Teams
+
 
 
 # Create your views here.
@@ -86,3 +88,26 @@ def password_reset_request(request):
 				return render (request, "users/password_reset.html")
 	password_reset_form = PasswordResetForm()
 	return render(request=request, template_name="users/password_reset.html", context={"password_reset_form":password_reset_form})
+
+
+
+@login_required(login_url='/login')  # Check login
+
+
+def user_predictions(request):
+	
+	
+	current_user = request.user
+	group_predictions = Predictions.objects.filter(user=current_user, round = 'Group Stage')
+	qa_predictions = Predictions.objects.filter(user=current_user, round = 'QA')
+
+
+	
+	context = {
+        'g': group_predictions,
+        'qa': qa_predictions
+    }
+
+	print(qa_predictions)
+
+	return render(request, "teams/predictions.html", context)
