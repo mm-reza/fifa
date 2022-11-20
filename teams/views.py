@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponseRedirect
 from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -296,6 +296,7 @@ def QuarterFinal(request):
                             p = Predictions(user = current_user, round = 'QA', rank = S.ranking , index=S.group, group = new[0].group, prediction=S)
                             p.save()
                             messages.success(request, "Pedictions Received !")
+                            return HttpResponseRedirect("/quiz")
                         except:
                             messages.warning(request, "No predictions available !")
 
