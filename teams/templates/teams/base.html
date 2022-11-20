@@ -27,6 +27,7 @@
             <img src="{% static 'img/2022.gif' %}" width="30" height="30" alt="">
           </a>
           <a class="navbar-brand mr-4" href="{% url 'scores' %}" style="font-size:15px;"> Scores </a>
+          <a class="navbar-brand mr-4" href="{% url 'predict' %}" style="font-size:15px;"> Quiz </a>
 
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
@@ -34,17 +35,16 @@
 
               <br>
 
-              <div class="dropdown">
+
+              {% comment %} <div class="dropdown">
                 <div style="color:#F9F9F9"> Stages </></div>
+
                 <div class="dropdown-options dropdown-menu">
-                  <a class="dropdown-item" href="#">Super16</a>
-                  <a class="dropdown-item" href="#">QuarterFinal</a>
-                  <a class="dropdown-item" href="#">SemiFinal</a>
-                  <a class="dropdown-item" href="#">Final</a>
-
-
+                  <a class="dropdown-item" href="{% url 'predict' %}">Predict</a>
                 </div>
-              </div>
+              </div> {% endcomment %}
+
+
             </div>
 
             <!-- Navbar Right Side -->

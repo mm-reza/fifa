@@ -10,6 +10,7 @@ from django.views.generic import (
     DeleteView
 )
 from .models import Teams, Predictions, PredictForm
+from django.contrib.auth.decorators import login_required
 
 from .forms import *
 from users.models import Profile
@@ -222,34 +223,34 @@ def Super16(request):
 #     ordering = ['-create_at']
 #     # paginate_by = 2
 
-
+@login_required(login_url='/login')  # Check login
 def QuarterFinal(request):
 
     current_user = request.user
 
     print(current_user)
 
-    a = Teams.objects.filter(round = '8')  #.values_list("team", flat=True)
+    a = Teams.objects.filter(round = 'QA')  #.values_list("team", flat=True)
     teams = Teams.objects.filter(round='Group Stage')
 
-    user_predictions = Predictions.objects.filter(user=current_user)
+    user_predictions = Predictions.objects.filter(user=current_user, round = 'QA')
     u=[]
     for ur in user_predictions:
-        u.append(ur.prediction)
+        u.append(ur.group)
 
     
 
     a_new = []
 
     for q in a:
-        a_new.append(q)
+        a_new.append(q.group)
+
     new = []
     for x in a_new:
         if x in u:
             pass
         else:
-            new.append(x)
-    print('---------', new, teams)
+            new.append(Teams.objects.get(round='QA', group=x))
     
     # print(type(teams), teams[0])
 
@@ -262,12 +263,19 @@ def QuarterFinal(request):
         # tem = Teams.objects.get(team=data[0][i])
         # t = Predictions(user = current_user, round='Group Stage', team = tem, group = data[1][i], index= data[2][i])
         # t.save()
+    try:
+        quez = new[0]
+    except:
+        quez = 0
     form = super8(request.POST)
     context = {
     'teams' : teams,
-    'A': new[0],
+    'A': quez,
     'form':form
     }
+
+    print('---------', new, u, quez)
+
     if request.method == 'POST':  # if there is a post
         if form.is_valid():
             data = Predictions()
@@ -281,15 +289,15 @@ def QuarterFinal(request):
    
                 if x in u :
                     print(user_predictions)
-                    messages.warning(request, "You have already predicted !")
+                    messages.warning(request, "No predictions available !")
                 else: 
-                    try:   
-                        for r, value in group_stage.items():
-                        #t = Teams.objects.get(team=value, round='8')
-                            p = Predictions(user = current_user, round='8', rank = S.ranking , index=S.group, group = S.group, prediction=S)
+                    for r, value in group_stage.items():
+                        try:
+                            p = Predictions(user = current_user, round = 'QA', rank = S.ranking , index=S.group, group = new[0].group, prediction=S)
                             p.save()
-                    except:
-                        messages.warning(request, "You have already predicted !")
+                            messages.success(request, "Pedictions Received !")
+                        except:
+                            messages.warning(request, "No predictions available !")
 
         else:
             print('form not valid')
@@ -309,7 +317,7 @@ def Final(request):
 
 def Scores(request):
 
-    scores = Profile.objects.all()
+    scores = Profile.objects.all().exclude(user__is_superuser=True)
 
 
 
@@ -317,11 +325,11 @@ def Scores(request):
 
         pre = Predictions.objects.filter(user=s.user)
         points = 0
-        print(pre)
+        # print(pre)
         for a in pre:
             try:
-                print("----------------",a.rank, type(a))
-                res = Teams.objects.get(ranking=a.rank, round=a.round)
+                # print("----------------",a.rank, type(a))
+                res = Teams.objects.get(ranking=a.rank, round=a.round) #.exclude(user__is_superuser=True)
                 a.result= res
                 if a.rank==a.prediction.ranking:
                     a.point=a.prediction.point

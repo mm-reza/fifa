@@ -8,7 +8,24 @@
 
 
     <div class="row  d-flex justify-content-center p-5">
-      <div class="col-lg-10">
+      <div class="col-lg-10 d-flex justify-content-center">
+
+
+        {% if A == 0  %}
+        <div class="cols-md-2 g-2">
+          <div class="col" style="padding:10px">
+            <div class="card h-100">
+              <div class="card-body">
+                <br>
+                <p>
+                <h2> No Prediciton or Quiz Available !</h2>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% else %}
           
               <Form id="form" action=""  method="post" name="theForm" onsubmit="return DisplayMessage();">
                 {% csrf_token %}
@@ -22,34 +39,33 @@
 
 
 
-                <div class="row row-cols-1 row-cols-md-4 g-4">
-                  <div class="col" style="padding:10px">
+                  <div style="padding:10px">
                     <div class="card h-100">
                       <div class="card-body">
-                        <h5 class="card-title d-flex justify-content-center">{{A.group}}</h5>
-                        <table class="card-table">
 
-                          <tr>
-                         
-                              <td style="width:100%">
+                        <h3 class="card-title ">{{A.group}}</h3>
+
+
 
                                 <select name='S' required id='id_S' class= 'box-element form-control' style='height: 55px;'>
-{% for rs in teams %}
-<option value='{{ rs.id }}'>{{ rs.team }}</option>
-{% endfor %}
+                                  {% for rs in teams %}
+                                  <option value='{{ rs.id }}'>{{ rs.team }}</option>
+                                  {% endfor %}
                  
-                              </select>
+                              </select>      
+                                                        
 
-                              </td>
-                          </tr>
-                        </table>
-           </div>
+
+                      </div>
+
+                    </div>
+
+                    <div class="p-5">
+                      <button class="button-os btn-block"><a>Predict</a></button>
                     </div>
                   </div>
                 </div>
-                  <div class="" id="bk">
-                    <button class="button-os btn-block"><a>Predict</a></button>
-                  </div>
+
 
                 </div>
 
@@ -58,8 +74,7 @@
 
 
 
-
-
+            {% endif %}
       </div>          
     <div>
   </div>

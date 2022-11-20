@@ -58,7 +58,7 @@ class Teams(models.Model):
 class Predictions(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     round = models.CharField(max_length=50)
-    rank = models.CharField(default="0", max_length=50)
+    rank = models.CharField(default="0", max_length=50, blank = True, null=True)
     index = models.CharField(max_length=50)
     group = models.CharField(max_length=50)
     prediction = models.ForeignKey(Teams, related_name="pre", on_delete=models.CASCADE)

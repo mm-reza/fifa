@@ -473,14 +473,24 @@
                     </div>
                   </div>
                 </div>
+                {% if request.user.is_authenticated %}
+
                   <div class="" id="bk">
                     <button class="button-os btn-block"><a>Predict</a></button>
                   </div>
+                  {% else %}
+                  <div class="card ">
+                    <div class=" d-flex justify-content-center">                   
+                      Please&nbsp;<a href="{% url 'login' %}">login</a>&nbsp;to predict.
+                    </div>
 
+                  </div>
+                  {% endif %}
                 </div>
 
       
             </Form>            
+
 
 
 
