@@ -330,7 +330,7 @@ def Scores(request):
         for a in pre:
             try:
                 # print("----------------",a.rank, type(a))
-                res = Teams.objects.get(index=a.id) #.exclude(user__is_superuser=True)
+                res = Teams.objects.get(round=a.round, ranking=a.rank, group = a.group ) #.exclude(user__is_superuser=True)
                 a.result= res
                 if a.rank==a.prediction.ranking:
                     a.point=a.prediction.point
