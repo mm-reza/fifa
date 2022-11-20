@@ -13,7 +13,7 @@ class Teams(models.Model):
     ranking = models.CharField(max_length=50, blank=True, null=True)
     round = models.CharField(max_length=50)
     team = models.CharField(max_length=50)
-    index = models.IntegerField()
+    index = models.CharField(max_length=50)
     # prediction = models.IntegerField(choices=RANKS, default=1)
     # result = models.IntegerField(choices=RANKS, default=0)
     point = models.IntegerField(default=0)

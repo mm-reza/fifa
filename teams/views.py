@@ -258,7 +258,7 @@ def QuarterFinal(request):
     # data = pd.read_csv('C:/Users/Reza/Desktop/teams.csv', header = None) 
 
     # for i in data.index:
-    #     t = Teams(user = current_user, round='Group Stage', team=data[0][i], group = data[1][i], index= data[2][i])
+    #     t = Teams(user = current_user, round='Group Stage', team=data[0][i], group = data[1][i], index= data[3][i])
     #     t.save()
         # tem = Teams.objects.get(team=data[0][i])
         # t = Predictions(user = current_user, round='Group Stage', team = tem, group = data[1][i], index= data[2][i])
@@ -293,7 +293,7 @@ def QuarterFinal(request):
                 else: 
                     for r, value in group_stage.items():
                         try:
-                            p = Predictions(user = current_user, round = 'QA', rank = S, index=S.group, group = new[0].group, prediction=S)
+                            p = Predictions(user = current_user, round = 'QA', rank = S, index=new[0].group, group = new[0].group, prediction=S)
                             p.save()
                             messages.success(request, "Pedictions Received !")
                             return HttpResponseRedirect("/quiz")
@@ -330,10 +330,10 @@ def Scores(request):
         for a in pre:
             #try:
                 # print("----------------",a.rank, type(a))
-            res = Teams.objects.get(group = a.group ) #.exclude(user__is_superuser=True)
+            res = Teams.objects.get(index = a.index ) #.exclude(user__is_superuser=True)
             a.result= res
-            if a.rank==a.prediction.ranking:
-                a.point=a.prediction.point
+            if a.rank== res.ranking:
+                a.point = res.point
             else:
                 a.point=0         
             a.save()
