@@ -22,5 +22,5 @@ urlpatterns = [
     # path('post/<int:pk>/delete/', PostDeleteView.as_view(), name='post-delete'),
     # path('about/', views.about, name='blog-about'),
 
-    # path('ajax/load-teams/', views.load_teams, name='ajax_load_teams'), # AJAX
+    path('ajax/load-teams/', views.load_teams, name='ajax_load_teams'), # AJAX
 ]
