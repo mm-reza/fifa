@@ -1,0 +1,124 @@
+.banner {
+  background: white;
+}
+  @media screen and (min-width: 768px) {
+    .banner {
+      height:100px; } }
+  .banner img {
+    max-width: 100% !important; }
+
+.bannertext {
+  font-family: "Montserrat", sans-serif;
+  font-size: 120px;
+  color: #57606a;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-style: italic;
+  padding-right: 10px; }
+  .bannertext01 {
+    font-size: 90px;
+    text-transform: uppercase;
+    padding-right: 10px; }
+    .bannertext01 sup {
+      font-size: 50%;
+      top: -1em; }
+  .bannertext02 {
+    background: #b81e20;
+    color: white;
+    position: relative;
+    font-style: italic;
+    padding: 13px 20px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    color: white;
+    font-weight: 400; }
+    .bannertext02:after, .bannertext02:before {
+      position: absolute;
+      width: 0;
+      height: 0;
+      content: '';
+      top: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent; }
+    .bannertext02:after {
+      right: -21px;
+      border-top: 45px solid #b81e20; }
+    .bannertext02:before {
+      left: -21px;
+      border-bottom: 45px solid #b81e20; }
+  .bannertext03 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 23px;
+    color: #979da0;
+    font-weight: 400; }
+
+.banner-text {
+  background: #57606a;
+  font-family: "Montserrat", sans-serif;
+  font-size: 30px;
+  color: white;
+  font-weight: 400;
+  text-transform: uppercase;
+  padding: 20px 0;
+  text-align: center; }
+
+@media screen and (min-width: 992px) {
+  .banner-text {
+    display: none; } }
+
+.layercontent01 {
+  left: 0% !important;
+ }
+
+.layercontent02, .layercontent03, .layercontent04, .layercontent05, .layercontent06, .layercontent07 {
+  display: none; }
+
+@media screen and (min-width: 992px) {
+  .layercontent02, .layercontent03, .layercontent04, .layercontent05, .layercontent06, .layercontent07 {
+    display: block; }
+  .layercontent02 {
+    left: 80% !important;
+    }
+  .layercontent03 {
+    left: 47% !important;
+    }
+  .layercontent04 {
+    left: 60.8% !important;
+    }
+  .layercontent05 {
+    left: 87% !important;
+    }
+  .layercontent06 {
+    left: 78% !important;
+     }
+  .layercontent07 {
+    left: 80% !important;
+    } }
+
+@media screen and (min-width: 1200px) {
+  .layercontent01 {
+    left: 10% !important;
+    top: 150px !important; }
+  .layercontent02 {
+    left: 65% !important;
+    }
+  .layercontent03 {
+    left: 55% !important;
+   }
+  .layercontent04 {
+    left: 61.8% !important;
+    }
+  .layercontent05 {
+    left: 75% !important;
+    }
+  .layercontent06 {
+    left: 72% !important;
+    }
+  .layercontent07 {
+    left: 75% !important;
+     } }
+
+@media screen and (min-width: 1500px) {
+  .layercontent01 {
+    left: 25% !important;
+    } }
