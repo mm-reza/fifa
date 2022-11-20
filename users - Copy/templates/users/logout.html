@@ -1,0 +1,16 @@
+{% extends "teams/base.html" %}
+{% block content %}
+
+<div class="row d-flex justify-content-center p-5">
+	<div class="col-lg-4" style="text-align:center">
+	<div class="card col">
+	<a>You Are Now Loged Out</a>
+	<div class="border-top pt-4">
+		<small class="text-muted">
+			Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Login Now</a>
+		</small></div>
+	</div>
+	</div>
+	</div>
+
+{% endblock %}

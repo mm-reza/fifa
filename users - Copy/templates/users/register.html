@@ -1,0 +1,39 @@
+{% extends "teams/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="row  d-flex justify-content-center p-5">
+	<div class="col-lg-4">
+	<div class="col card content-section">
+		<form method = "POST">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<legend class="border-bottom mb-4">Join Today Here</legend>
+				<table class=" d-flex justify-content-center">
+					{% for field in form.visible_fields %}
+					<tr>
+						<th style="padding: 10px;">{{ field.label_tag }}</th>
+						<td style="width: 40vw;">
+	
+							{{ field }}
+	
+						</td>
+					</tr>
+					{% endfor %}
+				</table>
+			</fieldset>
+			<div class="form-group">
+				<button class="btn btn-outline-info" type="submit">Sign Up</button>
+			</div>
+		</form>
+		<div class="border-top pt-4">
+			<small class="text-muted">
+				Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
+			</small>
+		</div>
+	</div>
+	</div>
+	</div>
+
+
+{% endblock %}
