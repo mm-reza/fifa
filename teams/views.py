@@ -125,7 +125,7 @@ def PostListView(request):
                 else:    
                     for r, value in group_stage.items():
                         t = Teams.objects.get(team=value, round='Group Stage')
-                        p = Predictions(user = current_user, round='Group Stage', rank = r, index=t.group, group = t.group, prediction=t)
+                        p = Predictions(user = current_user, round='Group Stage', rank = r, index=t.id, group = t.group, prediction=t)
                         p.save()
 
         else:
@@ -330,7 +330,7 @@ def Scores(request):
         for a in pre:
             try:
                 # print("----------------",a.rank, type(a))
-                res = Teams.objects.get(ranking=a.rank, round=a.round) #.exclude(user__is_superuser=True)
+                res = Teams.objects.get(index=a.id) #.exclude(user__is_superuser=True)
                 a.result= res
                 if a.rank==a.prediction.ranking:
                     a.point=a.prediction.point
