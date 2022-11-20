@@ -44,12 +44,12 @@ INSTALLED_APPS = [
     'users',
     'teams',
     'crispy_forms',
-    # 'whitenoise.runserver_nostatic',
+    'whitenoise.runserver_nostatic',
     ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
