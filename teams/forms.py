@@ -55,3 +55,7 @@ class super16(forms.Form):
     
 class super8(forms.Form):
     S = forms.ModelChoiceField(label='S', queryset=Teams.objects.filter(round='Group Stage'))
+
+
+class quiz(forms.Form):
+    S = forms.CharField()

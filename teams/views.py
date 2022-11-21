@@ -296,14 +296,86 @@ def QuarterFinal(request):
                             p = Predictions(user = current_user, round = 'QA', rank = S, index=new[0].group, group = new[0].group, prediction=S)
                             p.save()
                             messages.success(request, "Pedictions Received !")
-                            return HttpResponseRedirect("/quiz")
+                            return HttpResponseRedirect("/predict")
                         except:
                             messages.warning(request, "No predictions available !")
-
         else:
             print('form not valid')
 
     return render(request, "teams/super8.html", context)
+
+
+
+@login_required(login_url='/login')  # Check login
+def Quiz(request):
+
+    current_user = request.user
+
+    print(current_user)
+
+    a = Teams.objects.filter(round = 'quiz', ranking__isnull=True) #.values_list("team", flat=True)
+    teams = Teams.objects.filter(round='Group Stage')
+
+    user_predictions = Predictions.objects.filter(user=current_user, round = 'quiz')
+    u=[]
+    for ur in user_predictions:
+        u.append(ur.group)
+
+    
+
+    a_new = []
+
+    for q in a:
+        a_new.append(q.group)
+
+    new = []
+    for x in a_new:
+        if x in u:
+            pass
+        else:
+            new.append(Teams.objects.get(round='quiz', group=x))
+    try:
+        quez = new[0]
+    except:
+        quez = 0
+    form = quiz(request.POST)
+    context = {
+    'teams' : teams,
+    'A': quez,
+    'form':form
+    }
+
+    print('---------', new, u, quez)
+
+    if request.method == 'POST':  # if there is a post
+    # if form.is_valid():
+        data = Predictions()
+        S = form['S']
+        
+        group_stage = {
+            'S':S, 
+            }
+        print(group_stage)
+        if current_user.is_authenticated:
+
+            if x in u :
+                print(user_predictions)
+                messages.warning(request, "Not available !")
+            else: 
+                for r, value in group_stage.items():
+                    # try:
+                    p = Predictions(user = current_user, round = 'quiz', rank = S, index=new[0].group, group = new[0].group, prediction=S)
+                    p.save()
+                    messages.success(request, "Pedictions Received !")
+                    return HttpResponseRedirect("/quiz")
+                # except:
+                    messages.warning(request, "No predictions available !")
+    # else:
+        print('form not valid')
+
+    return render(request, "teams/quiz.html", context)
+
+
 
 def SemiFinal(request):
 
