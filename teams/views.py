@@ -403,7 +403,7 @@ def Scores(request):
             #try:
                 # print("----------------",a.rank, type(a))
             res = Teams.objects.get(index = a.index ) #.exclude(user__is_superuser=True)
-            a.result= res
+            a.result= res.ranking
             if a.rank== res.ranking:
                 a.point = res.point
             else:
