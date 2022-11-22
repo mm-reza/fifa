@@ -399,8 +399,6 @@ def Scores(request):
 
     scores = Profile.objects.all().exclude(user__is_superuser=True)
 
-
-
     for s in scores:
 
         pre = Predictions.objects.filter(user=s.user)
@@ -408,10 +406,10 @@ def Scores(request):
         # print(pre)
         for a in pre:
             try:
-                print("----------------",a.rank, type(a))
-                res = Teams.objects.get(index = a.index ) #.exclude(user__is_superuser=True)
-                # a.result= res
-                if a.rank == res.ranking:
+                # print("----------------",a.rank, type(a))
+                res = Teams.objects.filter(index = a.index ).last() #.exclude(user__is_superuser=True)
+                if a.rank == res.team:
+                    a.result= res
                     a.point = res.point
                 else:
                     a.point=0         
