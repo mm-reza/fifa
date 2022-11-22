@@ -412,7 +412,8 @@ def Scores(request):
                 # print("----------------", a.rank == res.team)
                 if a.prediction.team  == res.team:
                     #a.result= res
-                    a.point = res.point
+                    #a.point = res.point
+                    a.point=0
                 else:
                     a.point=0         
                 a.save()
