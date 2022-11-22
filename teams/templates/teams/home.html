@@ -475,9 +475,21 @@
                 </div>
                 {% if request.user.is_authenticated %}
 
+                  {% if d1 > d2 %}
+
                   <div class="" id="bk">
                     <button class="button-os btn-block"><a>Predict</a></button>
                   </div>
+                  {% else %}
+ 
+                  <div class="card ">
+                    <div class=" d-flex justify-content-center">                   
+                      Prediction period ended.
+                    </div>
+
+                  </div>
+                  {% endif %}
+                  
                   {% else %}
                   <div class="card ">
                     <div class=" d-flex justify-content-center">                   

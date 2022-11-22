@@ -62,6 +62,7 @@ class Predictions(models.Model):
     index = models.CharField(max_length=50)
     group = models.CharField(max_length=50)
     prediction = models.ForeignKey(Teams, related_name="pre", on_delete=models.CASCADE)
+    # result = models.CharField(max_length=50, blank=True, null=True)
     result = models.ForeignKey(Teams, related_name="res", on_delete=models.CASCADE, blank=True, null=True)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)

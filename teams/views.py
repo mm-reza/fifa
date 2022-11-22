@@ -59,6 +59,11 @@ def PostListView(request):
         # t = Predictions(user = current_user, round='Group Stage', team = tem, group = data[1][i], index= data[2][i])
         # t.save()
     form = GroupStage(request.POST)
+
+    import datetime
+
+    d2 = datetime.date.today()
+    d1 = datetime.date(2022, 11, 24)  
     context = {
     'teams' : teams,
     'A': a,
@@ -69,7 +74,9 @@ def PostListView(request):
     'F': f, 
     'G': g, 
     'H': h,
-    'form':form
+    'form':form,
+    'd1': d1,
+    'd2': d2
     }
     if request.method == 'POST':  # if there is a post
         if form.is_valid():
@@ -400,19 +407,18 @@ def Scores(request):
         points = 0
         # print(pre)
         for a in pre:
-            #try:
-                # print("----------------",a.rank, type(a))
-            res = Teams.objects.get(index = a.index ) #.exclude(user__is_superuser=True)
-            a.result= res.ranking
-            if a.rank== res.ranking:
-                a.point = res.point
-            else:
-                a.point=0         
-            a.save()
-
-            points+=a.point
-            #except:
-                #pass
+            try:
+                print("----------------",a.rank, type(a))
+                res = Teams.objects.get(index = a.index ) #.exclude(user__is_superuser=True)
+                # a.result= res
+                if a.rank == res.ranking:
+                    a.point = res.point
+                else:
+                    a.point=0         
+                a.save()
+                points+=a.point
+            except:
+                pass
 
             s.points=points
             s.save()
