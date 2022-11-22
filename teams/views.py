@@ -132,7 +132,7 @@ def PostListView(request):
                 else:    
                     for r, value in group_stage.items():
                         t = Teams.objects.get(team=value, round='Group Stage')
-                        p = Predictions(user = current_user, round='Group Stage', rank = r, index=r, group = t.group, prediction=t)
+                        p = Predictions(user = current_user, round='Group Stage', rank = t, index=r, group = t.group, prediction=t)
                         p.save()
 
         else:
