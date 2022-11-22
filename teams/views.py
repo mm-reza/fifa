@@ -410,7 +410,7 @@ def Scores(request):
                 res = Teams.objects.filter(index = a.index ).last() #.exclude(user__is_superuser=True)
                 
                 # print("----------------", a.rank == res.team)
-                if a.rank == res.team:
+                if a.prediction  == res.team:
                     a.result= res
                     a.point = res.point
                 else:
